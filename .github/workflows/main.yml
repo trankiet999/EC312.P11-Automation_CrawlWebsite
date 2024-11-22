@@ -3,8 +3,7 @@ name: Run Python Script Daily
 on:
   schedule:
     - cron: '20 14 * * *'  # Chạy vào lúc 9:20 tối GMT+7
-  workflow_dispatch:        # Thêm trigger này để bật nút "Run workflow"
-
+  workflow_dispatch:        # Cho phép chạy thủ công
 
 jobs:
   run:
@@ -16,12 +15,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'  # Chọn phiên bản Python phù hợp
+          python-version: '3.9'  # Nâng cấp Python lên 3.9
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas csv requests beautifulsoup4  # Cài đặt các thư viện cần thiết
+          pip install pandas requests beautifulsoup4  # Loại bỏ csv vì không cần thiết
 
       - name: Run Python script
         run: python script.py  # Chạy file script.py
