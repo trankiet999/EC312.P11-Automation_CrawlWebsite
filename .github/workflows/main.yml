@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests beautifulsoup4  # Cài đặt các thư viện cần thiết
+          pip install pandas csv requests beautifulsoup4  # Cài đặt các thư viện cần thiết
 
       - name: Run Python script
         run: python script.py  # Chạy file script.py
