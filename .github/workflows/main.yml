@@ -3,7 +3,8 @@ name: Run Python Script Daily
 on:
   schedule:
     - cron: '20 14 * * *'  # Chạy vào lúc 9:20 tối GMT+7
-  workflow_dispatch:        # Cho phép chạy thủ công
+  workflow_dispatch:        # Thêm trigger này để bật nút "Run workflow"
+
 
 jobs:
   run:
