@@ -1,0 +1,28 @@
+name: Schedule Crawl.py
+
+on:
+  schedule:
+    - cron: '15 8 * * *'  # Chạy lúc 8:15 AM UTC (tương đương 3:15 PM GMT+7) mỗi ngày
+  workflow_dispatch:  # Cho phép chạy thủ công từ GitHub Actions UI
+
+jobs:
+  run-crawl:
+    runs-on: ubuntu-latest  # Chạy trên Ubuntu
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Lấy mã nguồn từ repo
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Cài đặt Python 3.x
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Cài đặt các dependencies trong file requirements.txt
+
+      - name: Run Crawl.py
+        run: |
+          python Crawl.py  # Chạy file Crawl.py
