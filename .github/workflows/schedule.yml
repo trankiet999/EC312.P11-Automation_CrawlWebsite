@@ -3,7 +3,7 @@ name: Schedule Crawl.ipynb
 on:
   schedule:
     # Cron expression for every 5 minutes starting from 8:30 AM UTC
-    - cron: '30 8-23/1 * * *'  # Run at 8:30 AM UTC, then every 5 minutes after that
+    - cron: '0 0-23/1 * * *'  # Run at 8:30 AM UTC, then every 5 minutes after that
   workflow_dispatch:  # Allows manual trigger from the GitHub Actions UI
 
 jobs:
