@@ -2,7 +2,7 @@ name: Schedule Crawl.ipynb
 
 on:
   schedule:
-    - cron: '15 8 * * *'  # Chạy lúc 8:15 AM UTC (tương đương 3:15 PM GMT+7) mỗi ngày
+    - cron: '20 8 * * *'   # Chạy lúc 8:15 AM UTC (tương đương 3:15 PM GMT+7) mỗi ngày
   workflow_dispatch:  # Cho phép chạy thủ công từ GitHub Actions UI
 
 jobs:
