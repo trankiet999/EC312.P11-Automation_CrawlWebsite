@@ -2,28 +2,29 @@ name: Schedule Crawl.ipynb
 
 on:
   schedule:
+    # Cron expression for every 5 minutes starting from 8:30 AM UTC
     - cron: '30 8-23/1 * * *'  # Run at 8:30 AM UTC, then every 5 minutes after that
-  workflow_dispatch:  # Cho phép chạy thủ công từ GitHub Actions UI
+  workflow_dispatch:  # Allows manual trigger from the GitHub Actions UI
 
 jobs:
   run-crawl:
-    runs-on: ubuntu-latest  # Chạy trên Ubuntu
+    runs-on: ubuntu-latest  # Run on Ubuntu
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2  # Lấy mã nguồn từ repo
+        uses: actions/checkout@v2  # Checkout the code from the repository
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'  # Cài đặt Python 3.x
+          python-version: '3.x'  # Install Python 3.x
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Cài đặt các dependencies trong file requirements.txt
-          pip install jupyter  # Cài đặt Jupyter nếu chưa có
+          pip install -r requirements.txt  # Install the required dependencies in requirements.txt
+          pip install jupyter  # Install Jupyter if not already installed
 
       - name: Run Crawl.ipynb
         run: |
-          jupyter nbconvert --to notebook --execute Crawl.ipynb --output result.ipynb  # Thực thi Crawl.ipynb
+          jupyter nbconvert --to notebook --execute Crawl.ipynb --output result.ipynb  # Execute Crawl.ipynb
